@@ -96,21 +96,44 @@ public class OeuvreServiceImpl implements OeuvreService{
 
 	@Override
 	public ResponseObject findOeuvreByCritere(String cirtere, String cirtereValue) {
-		// TODO Auto-generated method stub
-		List<Oeuvre> list=new ArrayList<>();
-		System.out.println(cirtere);
-		switch (cirtere.toUpperCase()) {
-		case "ARTISTE":
-			list=repo.getByIdArtiste(cirtereValue);
-			break;
-		case "CATEGORIE":
-			list=repo.getByCategorie(cirtereValue);
-        break;
+		try {
+			// TODO Auto-generated method stub
+			List<Oeuvre> list=new ArrayList<>();
+			System.out.println(cirtere);
+			switch (cirtere.toUpperCase()) {
+			case "ARTISTE":
+				list=repo.getByIdArtiste(cirtereValue);
+				break;
+			case "CATEGORIE":
+				list=repo.getByCategorie(cirtereValue);
+	        break;
+	        
+			case "POIDS_MAX":
+				list=repo.getByCategorie(cirtereValue);
+	        break;
 
-		default:
-			break;
-		}
-		return new ResponseObject(EnumMessage.LIST_NOT_EMPTY.code,
-				EnumMessage.LIST_NOT_EMPTY.label, list); 	}
+			default:
+				list=null;
+				break;
+			}
+			if(list==null||list.isEmpty())
+			{
+				return new ResponseObject(EnumMessage.LIST_EMPTY.code,
+						EnumMessage.LIST_EMPTY.label, null); 	
+			}
+			return new ResponseObject(EnumMessage.LIST_NOT_EMPTY.code,
+					EnumMessage.LIST_NOT_EMPTY.label, list); 	
+			}	
+		
+	catch (Exception e) {
+		return new ResponseObject(EnumMessage.ERREUR_QUERY.code, e.getMessage(), null); 
+	}
+	}
+
+	@Override
+	public ResponseObject advancedFilterOeuvre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
