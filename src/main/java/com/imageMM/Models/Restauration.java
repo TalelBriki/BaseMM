@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Restauration")
 public class Restauration {
 	
-	private String idRestauration;
+	private String id;
 	private String constat;
 	private String causes;
 	private Date date_rest;
@@ -20,10 +20,10 @@ public class Restauration {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Restauration(String idRestauration, String constat, String causes, Date date_rest, String lieu_rest,
+	public Restauration(String id, String constat, String causes, Date date_rest, String lieu_rest,
 			String nom_rest, String type_inventraire, List<String> materiaux_techniques) {
 		super();
-		this.idRestauration = idRestauration;
+		this.id = id;
 		this.constat = constat;
 		this.causes = causes;
 		this.date_rest = date_rest;
@@ -32,11 +32,11 @@ public class Restauration {
 		this.type_inventraire = type_inventraire;
 		this.materiaux_techniques = materiaux_techniques;
 	}
-	public String getIdRestauration() {
-		return idRestauration;
+	public String getId() {
+		return id;
 	}
-	public void setIdRestauration(String idRestauration) {
-		this.idRestauration = idRestauration;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getConstat() {
 		return constat;

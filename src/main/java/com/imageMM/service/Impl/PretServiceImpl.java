@@ -3,6 +3,7 @@ package com.imageMM.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.imageMM.Enums.EnumMessage;
 import com.imageMM.Models.Pret;
@@ -11,6 +12,9 @@ import com.imageMM.repository.PretRepository;
 import com.imageMM.service.PretService;
 
 
+
+
+@Service
 public class PretServiceImpl implements PretService{
 
 	
@@ -61,7 +65,7 @@ public class PretServiceImpl implements PretService{
 	@Override
 	public ResponseObject getPretById(String idPret) {
 		try {
-			Pret ov=repo.getByIPret(idPret);
+			Pret ov=repo.getById(idPret);
 			if(ov==null)
 			{
 				return new ResponseObject(EnumMessage.OBJECT_NOT_EXISTS.code,

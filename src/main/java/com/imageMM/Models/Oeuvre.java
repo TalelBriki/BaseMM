@@ -27,6 +27,7 @@ public class Oeuvre {
 	
 	@Id
 	@GeneratedValue(generator = "String2")
+	private String id;
 	private String titre;
 	private String idArtiste;
 	private Date dareCreation;
@@ -46,7 +47,9 @@ public class Oeuvre {
 	}
 
 	public Oeuvre(String titre, String idArtiste, Date dareCreation, double height, double width, double profondeur,
-			double poids, int nb_elements, int nb_tirage, Type_tirage type_tirage, String description,Categorie categorie) {
+			double poids, int nb_elements, int nb_tirage, Type_tirage type_tirage, String description,Categorie categorie,
+			String id
+			) {
 		super();
 		this.titre = titre;
 		this.idArtiste = idArtiste;
@@ -60,6 +63,7 @@ public class Oeuvre {
 		this.type_tirage = type_tirage;
 		this.description = description;
         this.categorie=categorie;
+        this.id=id;
 	}
 
 	public String getTitre() {
@@ -158,6 +162,17 @@ public class Oeuvre {
 
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+	}
+	
+	
+	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	@Override

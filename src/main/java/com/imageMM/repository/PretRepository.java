@@ -6,5 +6,5 @@ import com.imageMM.Models.Pret;
 
 public interface PretRepository extends MongoRepository<Pret,String>{
 
-	public Pret getByIPret(String idPret);
+	public Pret getById(String idPret);
 }

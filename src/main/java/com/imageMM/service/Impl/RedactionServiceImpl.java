@@ -3,6 +3,7 @@ package com.imageMM.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.imageMM.Enums.EnumMessage;
 import com.imageMM.Models.Redaction_notice_inventaire;
@@ -14,6 +15,9 @@ import com.imageMM.service.RedactionService;
 import com.imageMM.service.OeuvreService;
 
 
+
+
+@Service
 public class RedactionServiceImpl implements RedactionService{
 
 	

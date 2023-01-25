@@ -14,7 +14,7 @@ public class Redaction_notice_inventaire {
 	
 	@GeneratedValue(generator = "String2")
 
-	private String idNotice;
+	private String id;
 	private String nom_redacteur;
 	private Date date_red;
 	private Date date_modif;
@@ -22,18 +22,18 @@ public class Redaction_notice_inventaire {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Redaction_notice_inventaire(String idNotice, String nom_redacteur, Date date_red, Date date_modif) {
+	public Redaction_notice_inventaire(String id, String nom_redacteur, Date date_red, Date date_modif) {
 		super();
-		this.idNotice = idNotice;
+		this.id = id;
 		this.nom_redacteur = nom_redacteur;
 		this.date_red = date_red;
 		this.date_modif = date_modif;
 	}
-	public String getIdNotice() {
-		return idNotice;
+	public String getId() {
+		return id;
 	}
-	public void setIdNotice(String idNotice) {
-		this.idNotice = idNotice;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getNom_redacteur() {
 		return nom_redacteur;
@@ -55,7 +55,7 @@ public class Redaction_notice_inventaire {
 	}
 	@Override
 	public String toString() {
-		return "Redaction_notice_inventaire [idNotice=" + idNotice + ", nom_redacteur=" + nom_redacteur + ", date_red="
+		return "Redaction_notice_inventaire [id=" + id + ", nom_redacteur=" + nom_redacteur + ", date_red="
 				+ date_red + ", date_modif=" + date_modif + "]";
 	}
 	

@@ -14,7 +14,7 @@ public class Pret {
 	@Id
 	@GeneratedValue(generator = "String2")
 
-	private String idPret;
+	private String id;
 	private String institution;
 	private String idExposition;
 	private String nomExposition;
@@ -24,21 +24,21 @@ public class Pret {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Pret(String idPret, String institution, String idExposition, String nomExposition, Date date_dep,
+	public Pret(String id, String institution, String idExposition, String nomExposition, Date date_dep,
 			Date date_ret) {
 		super();
-		this.idPret = idPret;
+		this.id = id;
 		this.institution = institution;
 		this.idExposition = idExposition;
 		this.nomExposition = nomExposition;
 		this.date_dep = date_dep;
 		this.date_ret = date_ret;
 	}
-	public String getIdPret() {
-		return idPret;
+	public String getId() {
+		return id;
 	}
-	public void setIdPret(String idPret) {
-		this.idPret = idPret;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getInstitution() {
 		return institution;

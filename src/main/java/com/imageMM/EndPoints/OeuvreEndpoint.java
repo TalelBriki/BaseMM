@@ -27,9 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import com.imageMM.Models.Oeuvre;
 import com.imageMM.Response.ResponseObject;
 import com.imageMM.service.CloudinaryService;
+import com.imageMM.service.OeuvreService;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import springfox.documentation.spring.web.json.Json;
 
 import java.lang.reflect.Type;
@@ -45,19 +48,28 @@ public class OeuvreEndpoint {
 	
     @Autowired
     CloudinaryService cloudinaryService;
+    @Autowired
+    OeuvreService oeuvreService;
 	
 	
-	@RequestMapping(
+	
+	 @ApiOperation(value = "create new oeuvre", notes = "return  the new oeuvre created.\n"
+	            + "\n<b>result = 1 :</b>object created successfully\n" 
+	            + "\n<b>result = -3 :</b> Query failed\n" 
+	            , response = Object.class)
+	    @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = Object.class),
+	            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
+	            @ApiResponse(code = 404, message = "not found") })
+	 @RequestMapping(
 			  value = "/createOeuvre", 
 			  produces = "application/json", 
 			  method = RequestMethod.POST)
-	@ApiOperation(value = "create new oeuvre")
 	public ResponseObject createOeuvre(
 			@ApiParam
 			@RequestBody
 			Oeuvre oeuvre)
 	{
-	return null;
+	return oeuvreService.createOeuvreObject(oeuvre);
 	}
 	
 	@ApiOperation(value = "upload file")
@@ -68,5 +80,26 @@ public class OeuvreEndpoint {
 	    		@RequestParam("file") MultipartFile file) {
 	        return cloudinaryService.upload( file);
 	    }
+	
+	
+	 @ApiOperation(value = "delete given oeuvre", notes = "delete  a given oeuvre.\n"
+	            + "\n<b>result = 1 :</b>object deleted successfully\n" 
+	            + "\n<b>result = -3 :</b> Query failed\n" 
+	            , response = Object.class)
+	    @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = Object.class),
+	            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
+	            @ApiResponse(code = 404, message = "not found") })
+	 @RequestMapping(
+			  value = "/deleteOeuvre/{id}", 
+			  produces = "application/json", 
+			  method = RequestMethod.DELETE)
+	 public ResponseObject deleteOeuvre(
+			 @ApiParam
+			 @PathVariable
+			 String id
+			 ) {
+		return oeuvreService.deleteOeuvreObject(id);
+		 
+	 }
 
 }

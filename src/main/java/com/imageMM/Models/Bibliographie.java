@@ -11,7 +11,7 @@ public class Bibliographie {
 	@Id
 	@GeneratedValue(generator = "String2")
 
-	private String idBibliographie;
+	private String id;
 	private String idOeuvre;
 	private String idAuteur;
 	private Date date_pub;
@@ -21,21 +21,21 @@ public class Bibliographie {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Bibliographie(String idBibliographie, String idOeuvre, String idAuteur, Date date_pub, int page,
+	public Bibliographie(String id, String idOeuvre, String idAuteur, Date date_pub, int page,
 			String idEditeur) {
 		super();
-		this.idBibliographie = idBibliographie;
+		this.id = id;
 		this.idOeuvre = idOeuvre;
 		this.idAuteur = idAuteur;
 		this.date_pub = date_pub;
 		this.page = page;
 		this.idEditeur = idEditeur;
 	}
-	public String getIdBibliographie() {
-		return idBibliographie;
+	public String getId() {
+		return id;
 	}
-	public void setIdBibliographie(String idBibliographie) {
-		this.idBibliographie = idBibliographie;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getIdOeuvre() {
 		return idOeuvre;
@@ -69,7 +69,7 @@ public class Bibliographie {
 	}
 	@Override
 	public String toString() {
-		return "Bibliographie [idBibliographie=" + idBibliographie + ", idOeuvre=" + idOeuvre + ", idAuteur=" + idAuteur
+		return "Bibliographie [id=" + id + ", idOeuvre=" + idOeuvre + ", idAuteur=" + idAuteur
 				+ ", date_pub=" + date_pub + ", page=" + page + ", idEditeur=" + idEditeur + "]";
 	}
 	

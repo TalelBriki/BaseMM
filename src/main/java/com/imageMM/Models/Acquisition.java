@@ -15,7 +15,7 @@ public class Acquisition {
 
 	@Id
 	@GeneratedValue(generator = "String2")
-	private String idAcc;
+	private String id;
 	
 	private String current_owner;
 	private Date date_acc;
@@ -38,10 +38,10 @@ public class Acquisition {
 
 
 
-	public Acquisition(String idAcc, String current_owner, Date date_acc, String lieu_acc, double prix,
+	public Acquisition(String id, String current_owner, Date date_acc, String lieu_acc, double prix,
 			Moyen_acc moyenne_acc, String preuve_achat, String certif_auth) {
 		super();
-		this.idAcc = idAcc;
+		this.id = id;
 		this.current_owner = current_owner;
 		this.date_acc = date_acc;
 		this.lieu_acc = lieu_acc;
@@ -54,15 +54,15 @@ public class Acquisition {
 
 
 
-	public String getIdAcc() {
-		return idAcc;
+	public String getId() {
+		return id;
 	}
 
 
 
 
-	public void setIdAcc(String idAcc) {
-		this.idAcc = idAcc;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 

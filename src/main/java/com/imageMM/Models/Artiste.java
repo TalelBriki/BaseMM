@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Artiste {
 	@Id
 	@GeneratedValue(generator = "String2")
-	private String idArtiste;
+	private String id;
 	private String nom;
 	private String prenom;
 	private Date date_nais;
@@ -32,10 +32,10 @@ public class Artiste {
 
 
 
-	public Artiste(String idArtiste, String nom, String prenom, Date date_nais, Date date_dec, String lieu_nais,
+	public Artiste(String id, String nom, String prenom, Date date_nais, Date date_dec, String lieu_nais,
 			String lieu_dec, String nationalite, String biografie) {
 		super();
-		this.idArtiste = idArtiste;
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.date_nais = date_nais;
@@ -49,15 +49,15 @@ public class Artiste {
 
 
 
-	public String getIdArtiste() {
-		return idArtiste;
+	public String getId() {
+		return id;
 	}
 
 
 
 
-	public void setIdArtiste(String idArtiste) {
-		this.idArtiste = idArtiste;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 
@@ -177,7 +177,7 @@ public class Artiste {
 
 	@Override
 	public String toString() {
-		return "Artiste [idArtiste=" + idArtiste + ", nom=" + nom + ", prenom=" + prenom + ", date_nais=" + date_nais
+		return "Artiste [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", date_nais=" + date_nais
 				+ ", date_dec=" + date_dec + ", lieu_nais=" + lieu_nais + ", lieu_dec=" + lieu_dec + ", nationalite="
 				+ nationalite + ", biografie=" + biografie + "]";
 	}

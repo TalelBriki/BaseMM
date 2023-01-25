@@ -7,4 +7,12 @@ import com.imageMM.Response.ResponseObject;
 public interface ExpositionService {
 
 	public ResponseObject createExposition(Exposition e);
+
+	ResponseObject deleteExposition(String idExposition);
+
+	ResponseObject updateExposition(Exposition o);
+
+	ResponseObject getExpositionById(String idExposition);
+
+	ResponseObject getAllExposition();
 }

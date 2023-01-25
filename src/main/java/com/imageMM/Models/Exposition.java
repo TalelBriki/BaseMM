@@ -15,7 +15,7 @@ public class Exposition {
 	@Id
 	@GeneratedValue(generator = "String2")
 
-	private String idExposition;
+	private String id;
 	private String titre;
 	private String lieu;
 	private Date date_debut;
@@ -27,19 +27,19 @@ public class Exposition {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Exposition(String idExposition, String titre, String lieu, Date date_debut, Date date_fin) {
+	public Exposition(String id, String titre, String lieu, Date date_debut, Date date_fin) {
 		super();
-		this.idExposition = idExposition;
+		this.id = id;
 		this.titre = titre;
 		this.lieu = lieu;
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
 	}
-	public String getIdExposition() {
-		return idExposition;
+	public String getId() {
+		return id;
 	}
-	public void setIdExposition(String idExposition) {
-		this.idExposition = idExposition;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getTitre() {
 		return titre;

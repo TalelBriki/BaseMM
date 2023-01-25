@@ -11,7 +11,7 @@ public class Signature {
 	@Id
 	@GeneratedValue(generator = "String2")
 
-	private String idSignature;
+	private String id;
 	private String idOeuvre;
 	private String description;
 	private String idLocaisation;
@@ -19,18 +19,18 @@ public class Signature {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Signature(String idSignature, String idOeuvre, String description, String idLocaisation) {
+	public Signature(String id, String idOeuvre, String description, String idLocaisation) {
 		super();
-		this.idSignature = idSignature;
+		this.id = id;
 		this.idOeuvre = idOeuvre;
 		this.description = description;
 		this.idLocaisation = idLocaisation;
 	}
-	public String getIdSignature() {
-		return idSignature;
+	public String getId() {
+		return id;
 	}
-	public void setIdSignature(String idSignature) {
-		this.idSignature = idSignature;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getIdOeuvre() {
 		return idOeuvre;

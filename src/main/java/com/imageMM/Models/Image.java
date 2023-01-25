@@ -2,8 +2,16 @@ package com.imageMM.Models;
 
 import java.util.List;
 
+import javax.persistence.GeneratedValue;
+
+import org.springframework.data.annotation.Id;
+
 public class Image {
 
+	@Id
+	@GeneratedValue(generator = "String2")
+
+	private String id;
 	private int nb_inventaire;
 	private String copyright_notice;
 	private List<String> tags;
@@ -15,7 +23,9 @@ public class Image {
 		// TODO Auto-generated constructor stub
 	}
 	public Image(String copyright_notice, List<String> tags, String droits_photographiques, String url,
-			String idOeuvre, int nb_inventaire) {
+			String idOeuvre, int nb_inventaire,
+			String id
+			) {
 		super();
 		this.copyright_notice = copyright_notice;
 		this.tags = tags;
@@ -23,6 +33,7 @@ public class Image {
 		this.url = url;
 		this.idOeuvre = idOeuvre;
 		this.nb_inventaire=nb_inventaire;
+		this.id=id;
 	}
 	public String getCopyright_notice() {
 		return copyright_notice;
@@ -59,6 +70,12 @@ public class Image {
 	}
 	public void setNb_inventaire(int nb_inventaire) {
 		this.nb_inventaire = nb_inventaire;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

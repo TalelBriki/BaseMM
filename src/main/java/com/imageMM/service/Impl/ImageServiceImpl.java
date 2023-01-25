@@ -3,6 +3,7 @@ package com.imageMM.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.imageMM.Enums.EnumMessage;
 import com.imageMM.Models.Image;
@@ -13,6 +14,9 @@ import com.imageMM.repository.OeuvreRepository;
 import com.imageMM.service.ImageService;
 import com.imageMM.service.OeuvreService;
 
+
+
+@Service
 public class ImageServiceImpl implements ImageService{
 
 	
