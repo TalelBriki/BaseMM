@@ -16,4 +16,7 @@ public interface SignatureService {
 	ResponseObject getSignatureById(String idSignature);
 
 	ResponseObject getAllSignature();
+	
+	ResponseObject getByIdLocalisation();
+
 }

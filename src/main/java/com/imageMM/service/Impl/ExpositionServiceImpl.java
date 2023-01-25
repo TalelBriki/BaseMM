@@ -105,4 +105,12 @@ public class ExpositionServiceImpl implements ExpositionService{
 		}
 	}
 
+
+
+	@Override
+	public ResponseObject getByIdOeuvre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

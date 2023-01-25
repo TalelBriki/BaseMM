@@ -15,4 +15,6 @@ public interface BibliographieService {
 	ResponseObject getBibliographieById(String idBibliographie);
 
 	ResponseObject getAllBibliographie();
+	ResponseObject getByIdOeuvre();
+
 }

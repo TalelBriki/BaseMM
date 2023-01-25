@@ -33,6 +33,7 @@ public class CloudinaryService {
                 //String secure_url = uploadResult.get("secure_url").toString();
                 return uploadResult;
             } catch (Exception ex) {
+            	
                 logger.error(ex.getMessage());
                 return null;
             }

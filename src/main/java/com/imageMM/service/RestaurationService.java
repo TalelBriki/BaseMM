@@ -16,4 +16,6 @@ public interface RestaurationService {
 	ResponseObject getRestaurationById(String idRestauration);
 
 	ResponseObject getAllRestauration();
+	ResponseObject getByIdOeuvre();
+
 }

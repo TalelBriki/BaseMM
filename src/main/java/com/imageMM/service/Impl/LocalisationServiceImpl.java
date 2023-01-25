@@ -110,4 +110,13 @@ public class LocalisationServiceImpl implements LocalisationService{
 		}
 	}
 
+
+
+
+	@Override
+	public ResponseObject getByIdOeuvre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

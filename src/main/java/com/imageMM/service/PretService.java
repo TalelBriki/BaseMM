@@ -11,4 +11,8 @@ public interface PretService {
 	public ResponseObject updatePret(Pret o);
 	public ResponseObject getPretById(String idPret);
 	public ResponseObject getAllPret();
+	
+	
+	ResponseObject getByIdExposition();
+
 }

@@ -104,6 +104,14 @@ public class BibliographieServiceImpl implements BibliographieService{
 			return new ResponseObject(EnumMessage.ERREUR_QUERY.code, e.getMessage(), null); 
 		}
 }
+
+
+
+	@Override
+	public ResponseObject getByIdOeuvre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

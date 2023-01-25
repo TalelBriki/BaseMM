@@ -15,4 +15,7 @@ public interface LocalisationService {
 	ResponseObject getLocalisationById(String idLocalisation);
 
 	ResponseObject getAllLocalisation();
+	
+	ResponseObject getByIdOeuvre();
+
 }

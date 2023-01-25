@@ -167,11 +167,34 @@ public class ImageEndPoint {
 			  produces = "application/json", 
 			  method = RequestMethod.PUT)
 	 public Object updateImage(
-			 @ApiParam
+			 @ApiParam(value = "image updated")
 			 @RequestBody
 			 Image o
 			 ) {
 		return imageService.updateImage(o);
+		 
+	 }
+	 
+	 
+	 @ApiOperation(value = "filter images by  tag ", notes = "filter images by  tag\n"
+	            + "\n<b>result = 1 :</b>list not empty \n" 
+	            + "\n<b>result = -2 :</b>list empty \n" 
+
+	            + "\n<b>result = -3 :</b> Query failed\n" 
+	            , response = Object.class)
+	    @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = Object.class),
+	            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
+	            @ApiResponse(code = 404, message = "not found") })
+	 @RequestMapping(
+			  value = "/findImageListByTag/{tag}", 
+			  produces = "application/json", 
+			  method = RequestMethod.GET)
+	 public Object findImageListByTag(
+			 @ApiParam(value = "tag filter")
+			 @PathVariable
+			 String tag
+			 ) {
+		return imageService.findImageByTag(tag);
 		 
 	 }
 

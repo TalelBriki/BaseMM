@@ -107,4 +107,13 @@ public class RedactionServiceImpl implements RedactionService{
 		}
 	}
 
+
+
+
+	@Override
+	public ResponseObject getByIdOeuvre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

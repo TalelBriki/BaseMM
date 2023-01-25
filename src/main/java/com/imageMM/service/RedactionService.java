@@ -16,4 +16,7 @@ public interface RedactionService {
 	ResponseObject getRedactionById(String idRedaction);
 
 	ResponseObject getAllRedaction();
+	
+	ResponseObject getByIdOeuvre();
+
 }

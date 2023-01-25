@@ -14,4 +14,7 @@ public interface OeuvreService {
 	
 	public ResponseObject findOeuvreByCritere(String cirtere,String cirtereValue);
 	
+	
+	
+	
 }

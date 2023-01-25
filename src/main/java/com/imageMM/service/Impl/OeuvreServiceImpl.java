@@ -1,5 +1,6 @@
 package com.imageMM.service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,7 +97,20 @@ public class OeuvreServiceImpl implements OeuvreService{
 	@Override
 	public ResponseObject findOeuvreByCritere(String cirtere, String cirtereValue) {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		List<Oeuvre> list=new ArrayList<>();
+		System.out.println(cirtere);
+		switch (cirtere.toUpperCase()) {
+		case "ARTISTE":
+			list=repo.getByIdArtiste(cirtereValue);
+			break;
+		case "CATEGORIE":
+			list=repo.getByCategorie(cirtereValue);
+        break;
+
+		default:
+			break;
+		}
+		return new ResponseObject(EnumMessage.LIST_NOT_EMPTY.code,
+				EnumMessage.LIST_NOT_EMPTY.label, list); 	}
 
 }

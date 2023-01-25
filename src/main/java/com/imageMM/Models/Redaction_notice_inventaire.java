@@ -18,16 +18,19 @@ public class Redaction_notice_inventaire {
 	private String nom_redacteur;
 	private Date date_red;
 	private Date date_modif;
+	private String idOeuvre;
 	public Redaction_notice_inventaire() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Redaction_notice_inventaire(String id, String nom_redacteur, Date date_red, Date date_modif) {
+	public Redaction_notice_inventaire(String id, String nom_redacteur, Date date_red, 
+			Date date_modif,String idOeuvre) {
 		super();
 		this.id = id;
 		this.nom_redacteur = nom_redacteur;
 		this.date_red = date_red;
 		this.date_modif = date_modif;
+		this.idOeuvre=idOeuvre;
 	}
 	public String getId() {
 		return id;
@@ -52,6 +55,16 @@ public class Redaction_notice_inventaire {
 	}
 	public void setDate_modif(Date date_modif) {
 		this.date_modif = date_modif;
+	}
+	
+	
+	
+	
+	public String getIdOeuvre() {
+		return idOeuvre;
+	}
+	public void setIdOeuvre(String idOeuvre) {
+		this.idOeuvre = idOeuvre;
 	}
 	@Override
 	public String toString() {

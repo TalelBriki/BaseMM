@@ -103,6 +103,12 @@ public class SignatureServiceImpl implements SignatureService{
 		}
 	}
 
+	@Override
+	public ResponseObject getByIdLocalisation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

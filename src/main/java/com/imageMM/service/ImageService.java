@@ -16,4 +16,8 @@ public interface ImageService {
 	ResponseObject getImageById(String idImage);
 
 	ResponseObject getAllImage();
+	
+	ResponseObject findImageByTag(String tag);
+	ResponseObject getByIdOeuvre();
+
 }

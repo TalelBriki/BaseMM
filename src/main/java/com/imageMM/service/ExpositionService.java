@@ -15,4 +15,6 @@ public interface ExpositionService {
 	ResponseObject getExpositionById(String idExposition);
 
 	ResponseObject getAllExposition();
+	ResponseObject getByIdOeuvre();
+
 }

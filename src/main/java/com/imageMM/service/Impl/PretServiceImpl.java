@@ -97,5 +97,12 @@ public class PretServiceImpl implements PretService{
 	}
 
 
+	@Override
+	public ResponseObject getByIdExposition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

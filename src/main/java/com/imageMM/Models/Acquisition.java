@@ -26,6 +26,7 @@ public class Acquisition {
     
     private String preuve_achat;
     private String certif_auth;
+    private String idOeuvre;
     
     
     
@@ -39,7 +40,9 @@ public class Acquisition {
 
 
 	public Acquisition(String id, String current_owner, Date date_acc, String lieu_acc, double prix,
-			Moyen_acc moyenne_acc, String preuve_achat, String certif_auth) {
+			Moyen_acc moyenne_acc, String preuve_achat, String certif_auth
+			,String idOeuvre
+			) {
 		super();
 		this.id = id;
 		this.current_owner = current_owner;
@@ -49,6 +52,7 @@ public class Acquisition {
 		this.moyenne_acc = moyenne_acc;
 		this.preuve_achat = preuve_achat;
 		this.certif_auth = certif_auth;
+		this.idOeuvre=idOeuvre;
 	}
 
 
@@ -161,6 +165,20 @@ public class Acquisition {
 
 	public void setCertif_auth(String certif_auth) {
 		this.certif_auth = certif_auth;
+	}
+
+
+
+
+	public String getIdOeuvre() {
+		return idOeuvre;
+	}
+
+
+
+
+	public void setIdOeuvre(String idOeuvre) {
+		this.idOeuvre = idOeuvre;
 	}
 	
 	

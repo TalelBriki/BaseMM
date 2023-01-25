@@ -115,4 +115,35 @@ public class ImageServiceImpl implements ImageService{
 	}
 
 
+
+	@Override
+	public ResponseObject findImageByTag(String tag) {
+		// TODO Auto-generated method stub
+		
+		
+		try {
+			List<Image> list=repo.findByTags(tag);
+			if(list==null||list.isEmpty())
+			{
+				return new ResponseObject(EnumMessage.LIST_EMPTY.code,
+						EnumMessage.LIST_EMPTY.label, null); 
+			}
+			return new ResponseObject(EnumMessage.LIST_NOT_EMPTY.code,
+					EnumMessage.LIST_NOT_EMPTY.label, list); 
+
+		}catch (Exception e) {
+			return new ResponseObject(EnumMessage.ERREUR_QUERY.code, e.getMessage(), null); 
+		}
+
+	}
+
+
+
+	@Override
+	public ResponseObject getByIdOeuvre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

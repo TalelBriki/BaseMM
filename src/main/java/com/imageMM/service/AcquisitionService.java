@@ -15,4 +15,6 @@ public interface AcquisitionService {
 	ResponseObject getAcquisitionById(String idAcquisition);
 
 	ResponseObject getAllAcquisition();
+	
+	ResponseObject getByIdOeuvre();
 }

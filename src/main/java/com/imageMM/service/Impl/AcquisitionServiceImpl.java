@@ -107,4 +107,12 @@ public class AcquisitionServiceImpl implements AcquisitionService{
 	}
 
 
+
+	@Override
+	public ResponseObject getByIdOeuvre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

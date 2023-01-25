@@ -158,5 +158,36 @@ public class OeuvreEndpoint {
 		return oeuvreService.updateOeuvreObject(o);
 		 
 	 }
+	 
+	 
+	 @ApiOperation(value = "get Oeuvre list By Criteres  ", notes = "filter oeuvres\n"
+	            + "\n<b>result = 1 :</b>list not empty \n" 
+	            + "\n<b>result = -2 :</b>list  empty\n" 
+
+	            + "\n<b>result = -3 :</b> Query failed\n" 
+	            + "\n<b>critere = ARTISTE  value = idARTISTE\n" 
+	            + "\n<b>critere = CATEGORIE  value = categroie\n" 
+
+	            , response = Object.class)
+	    @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = Object.class),
+	            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
+	            @ApiResponse(code = 404, message = "not found") })
+	 @RequestMapping(
+			  value = "/getAllOeuvreByCritere/{critere}/{value}", 
+			  produces = "application/json", 
+			  method = RequestMethod.GET)
+	 public Object getAllOeuvreByCritere(
+			 @ApiParam(value = "critere")
+			 @PathVariable(name = "critere")
+			 String critere,
+			 
+			 @ApiParam(value = "value")
+			 @PathVariable(name = "value")
+			 String value
+			 
+			 ) {
+		return oeuvreService.findOeuvreByCritere(critere,value);
+		 
+	 }
 
 }
