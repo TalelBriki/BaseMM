@@ -16,7 +16,7 @@ public class CloudinaryService {
 
 
 
-    public String upload( MultipartFile file) {
+    public Map upload( MultipartFile file) {
        
     	
     	Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
@@ -30,8 +30,8 @@ public class CloudinaryService {
                 	    "categorization", "imagga_tagging", 
                 	    "auto_tagging", "0.4"));
                 System.out.println("\n --------------\n"+uploadResult.toString());
-                String secure_url = uploadResult.get("secure_url").toString();
-                return secure_url;
+                //String secure_url = uploadResult.get("secure_url").toString();
+                return uploadResult;
             } catch (Exception ex) {
                 logger.error(ex.getMessage());
                 return null;

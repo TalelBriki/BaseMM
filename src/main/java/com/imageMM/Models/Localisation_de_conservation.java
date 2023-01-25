@@ -21,6 +21,7 @@ public class Localisation_de_conservation {
 		@GeneratedValue(generator = "String2")
 
 	 private String id;
+	 private String idOeuvre;
 	private String lieu;
 	private String place_depot;
 	private ModeSockage  stockage;
@@ -32,13 +33,14 @@ public class Localisation_de_conservation {
 		// TODO Auto-generated constructor stub
 	}
 	public Localisation_de_conservation(String id, String lieu, String place_depot, ModeSockage stockage,
-			String typeEmballe) {
+			String typeEmballe,String idOeuvre) {
 		super();
 		this.id = id;
 		this.lieu = lieu;
 		this.place_depot = place_depot;
 		this.stockage = stockage;
 		this.typeEmballe = typeEmballe;
+		this.idOeuvre=idOeuvre;
 	}
 	public String getId() {
 		return id;
@@ -69,6 +71,12 @@ public class Localisation_de_conservation {
 	}
 	public void setTypeEmballe(String typeEmballe) {
 		this.typeEmballe = typeEmballe;
+	}
+	public String getIdOeuvre() {
+		return idOeuvre;
+	}
+	public void setIdOeuvre(String idOeuvre) {
+		this.idOeuvre = idOeuvre;
 	}
 	
 	

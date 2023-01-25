@@ -21,19 +21,20 @@ public class Exposition {
 	private Date date_debut;
 	private Date date_fin;
 	
-	
+	private String idOeuvre;
 	
 	public Exposition() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Exposition(String id, String titre, String lieu, Date date_debut, Date date_fin) {
+	public Exposition(String id, String titre, String lieu, Date date_debut, Date date_fin,String idOeuvre) {
 		super();
 		this.id = id;
 		this.titre = titre;
 		this.lieu = lieu;
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
+		this.idOeuvre=idOeuvre;
 	}
 	public String getId() {
 		return id;
@@ -64,6 +65,12 @@ public class Exposition {
 	}
 	public void setDate_fin(Date date_fin) {
 		this.date_fin = date_fin;
+	}
+	public String getIdOeuvre() {
+		return idOeuvre;
+	}
+	public void setIdOeuvre(String idOeuvre) {
+		this.idOeuvre = idOeuvre;
 	}
 	
 	

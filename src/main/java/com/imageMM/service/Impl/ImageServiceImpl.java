@@ -3,7 +3,9 @@ package com.imageMM.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Map;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.imageMM.Enums.EnumMessage;
 import com.imageMM.Models.Image;
@@ -11,8 +13,8 @@ import com.imageMM.Models.Oeuvre;
 import com.imageMM.Response.ResponseObject;
 import com.imageMM.repository.ImageRepository;
 import com.imageMM.repository.OeuvreRepository;
+import com.imageMM.service.CloudinaryService;
 import com.imageMM.service.ImageService;
-import com.imageMM.service.OeuvreService;
 
 
 
@@ -23,10 +25,18 @@ public class ImageServiceImpl implements ImageService{
 	@Autowired
 	private ImageRepository repo;
 	
-	
+    @Autowired
+    CloudinaryService cloudinaryService;
 
 	@Override
-	public ResponseObject createImage(Image b) {
+	public ResponseObject createImage(Image b,MultipartFile file) {
+		Map uploadResult=cloudinaryService.upload(file);
+		String secure_url = uploadResult.get("secure_url").toString();
+		List<String> tags=(List<String>) uploadResult.get("tags");
+		System.out.println(tags.get(0));
+	    b.setUrl(secure_url);
+	    b.setTags(tags);
+		//set Tags
 		// TODO Auto-generated method stub
 		try {
 			Image ov=repo.save(b);

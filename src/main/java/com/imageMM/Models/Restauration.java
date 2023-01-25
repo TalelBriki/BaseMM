@@ -3,12 +3,19 @@ package com.imageMM.Models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.GeneratedValue;
+
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Restauration")
 public class Restauration {
 	
+	@Id
+	@GeneratedValue(generator = "String2")
+
 	private String id;
+	private String idOeuvre;
 	private String constat;
 	private String causes;
 	private Date date_rest;
@@ -21,7 +28,7 @@ public class Restauration {
 		// TODO Auto-generated constructor stub
 	}
 	public Restauration(String id, String constat, String causes, Date date_rest, String lieu_rest,
-			String nom_rest, String type_inventraire, List<String> materiaux_techniques) {
+			String nom_rest, String type_inventraire, List<String> materiaux_techniques,String idOeuvre) {
 		super();
 		this.id = id;
 		this.constat = constat;
@@ -31,6 +38,8 @@ public class Restauration {
 		this.nom_rest = nom_rest;
 		this.type_inventraire = type_inventraire;
 		this.materiaux_techniques = materiaux_techniques;
+		this.idOeuvre=idOeuvre;
+		
 	}
 	public String getId() {
 		return id;
@@ -79,6 +88,12 @@ public class Restauration {
 	}
 	public void setMateriaux_techniques(List<String> materiaux_techniques) {
 		this.materiaux_techniques = materiaux_techniques;
+	}
+	public String getIdOeuvre() {
+		return idOeuvre;
+	}
+	public void setIdOeuvre(String idOeuvre) {
+		this.idOeuvre = idOeuvre;
 	}
 	
 	

@@ -1,17 +1,10 @@
 package com.imageMM.EndPoints;
 
-import java.io.IOException;
-import java.net.URI;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,61 +13,84 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.gson.reflect.TypeToken;
-import com.imageMM.Models.Oeuvre;
-import com.imageMM.Response.ResponseObject;
+import com.imageMM.Dto.ImageDto;
+import com.imageMM.Models.Image;
 import com.imageMM.service.CloudinaryService;
-import com.imageMM.service.OeuvreService;
-
+import com.imageMM.service.ImageService;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import springfox.documentation.spring.web.json.Json;
 
-import java.lang.reflect.Type;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
+
+
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/v1")
-public class OeuvreEndpoint {
+public class ImageEndPoint {
+     @Autowired
+     ImageService imageService;
+     @Autowired
+     CloudinaryService cloudinaryService;
 	
-  
-    @Autowired
-    OeuvreService oeuvreService;
+     
+     
+ 	@ApiOperation(value = "upload file")
+	 @PostMapping("/uploadFile")
+	    public @ResponseBody
+	    Map uploadFile(
+	    		@ApiParam
+	    		@RequestParam("file") MultipartFile file) {
+	        return cloudinaryService.upload( file);
+	    }
 	
 	
-	
-	 @ApiOperation(value = "create new oeuvre", notes = "return  the new oeuvre created.\n"
+	 @ApiOperation(value = "create new Image", notes = "return  the new Image created.\n"
 	            + "\n<b>result = 1 :</b>object created successfully\n" 
 	            + "\n<b>result = -3 :</b> Query failed\n" 
-	            , response = Object.class)
+	            , response = Object.class,consumes = "multipart/form-data")
 	    @ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = Object.class),
 	            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
 	            @ApiResponse(code = 404, message = "not found") })
-	 @RequestMapping(
-			  value = "/createOeuvre", 
-			  produces = "application/json", 
-			  method = RequestMethod.POST)
-	public Object createOeuvre(
-			@ApiParam
-			@RequestBody
-			Oeuvre oeuvre)
+	
+	 @PostMapping("/createImage/{idOeuvre}/{nb_inventaire}/{copyright_notice}/{droits_photographiques}")
+	    public @ResponseBody
+	 Object createImage(
+		  @ApiParam
+		  @PathVariable
+		  String idOeuvre,
+		  @ApiParam
+		  @PathVariable
+		  int nb_inventaire,
+		  @ApiParam
+		  @PathVariable
+		  String copyright_notice,
+		  @ApiParam
+		  @PathVariable
+		  String droits_photographiques,
+		  @ApiParam
+		  @PathVariable MultipartFile file
+		 )
 	{
-	return oeuvreService.createOeuvreObject(oeuvre);
+		 Image i=new Image();
+		 i.setCopyright_notice(copyright_notice);
+		 i.setDroits_photographiques(droits_photographiques);
+		 i.setIdOeuvre(idOeuvre);
+		 i.setNb_inventaire(nb_inventaire);
+		 
+	return imageService.createImage(i,file);
 	}
 	
 
 	
 	
-	 @ApiOperation(value = "delete given oeuvre", notes = "delete  a given oeuvre.\n"
+	 @ApiOperation(value = "delete given Image", notes = "delete  a given Image.\n"
 	            + "\n<b>result = 1 :</b>object deleted successfully\n" 
 	            + "\n<b>result = -3 :</b> Query failed\n" 
 	            , response = Object.class)
@@ -82,20 +98,20 @@ public class OeuvreEndpoint {
 	            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
 	            @ApiResponse(code = 404, message = "not found") })
 	 @RequestMapping(
-			  value = "/deleteOeuvre/{id}", 
+			  value = "/deleteImage/{id}", 
 			  produces = "application/json", 
 			  method = RequestMethod.DELETE)
-	 public Object deleteOeuvre(
+	 public Object deleteImage(
 			 @ApiParam
 			 @PathVariable
 			 String id
 			 ) {
-		return oeuvreService.deleteOeuvreObject(id);
+		return imageService.deleteImage(id);
 		 
 	 }
 	 
 	 
-	 @ApiOperation(value = "get  oeuvre by id", notes = "get oeuvre by given id.\n"
+	 @ApiOperation(value = "get  Image by id", notes = "get Image by given id.\n"
 	            + "\n<b>result = 1 :</b>object exists\n" 
 	            + "\n<b>result = -2 :</b>object not exists \n" 
 
@@ -105,20 +121,20 @@ public class OeuvreEndpoint {
 	            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
 	            @ApiResponse(code = 404, message = "not found") })
 	 @RequestMapping(
-			  value = "/getOeuvreById/{id}", 
+			  value = "/getImageById/{id}", 
 			  produces = "application/json", 
 			  method = RequestMethod.GET)
-	 public Object getOeuvreById(
+	 public Object getImageById(
 			 @ApiParam
 			 @PathVariable
 			 String id
 			 ) {
-		return oeuvreService.getOeuvreObjectById(id);
+		return imageService.getImageById(id);
 		 
 	 }
 	 
 	 
-	 @ApiOperation(value = "get  oeuvre list", notes = "get oeuvre by given id.\n"
+	 @ApiOperation(value = "get  Image list", notes = "get Image by given id.\n"
 	            + "\n<b>result = 1 :</b>list not empty\n" 
 	            + "\n<b>result = -2 :</b>list empty \n" 
 
@@ -128,18 +144,18 @@ public class OeuvreEndpoint {
 	            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
 	            @ApiResponse(code = 404, message = "not found") })
 	 @RequestMapping(
-			  value = "/getAllOeuvre", 
+			  value = "/getAllImage", 
 			  produces = "application/json", 
 			  method = RequestMethod.GET)
-	 public Object getAllOeuvre() {
-		return oeuvreService.getAllOeuvreObject();
+	 public Object getAllImage() {
+		return imageService.getAllImage();
 		 
 	 }
 	 
 	 
-	 @ApiOperation(value = "update oeuvre ", notes = "update oeuvre\n"
+	 @ApiOperation(value = "update Image ", notes = "update Image\n"
 	            + "\n<b>result = 1 :</b>updated successfully\n" 
-	            + "\n<b>result = -2 :</b>oeuvre does not exist\n" 
+	            + "\n<b>result = -2 :</b>Image does not exist\n" 
 
 	            + "\n<b>result = -3 :</b> Query failed\n" 
 	            , response = Object.class)
@@ -147,16 +163,20 @@ public class OeuvreEndpoint {
 	            @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
 	            @ApiResponse(code = 404, message = "not found") })
 	 @RequestMapping(
-			  value = "/updateOeuvre", 
+			  value = "/updateImage", 
 			  produces = "application/json", 
 			  method = RequestMethod.PUT)
-	 public Object updateOeuvre(
+	 public Object updateImage(
 			 @ApiParam
 			 @RequestBody
-			 Oeuvre o
+			 Image o
 			 ) {
-		return oeuvreService.updateOeuvreObject(o);
+		return imageService.updateImage(o);
 		 
 	 }
 
+
 }
+
+
+

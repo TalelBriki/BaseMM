@@ -1,12 +1,13 @@
 package com.imageMM.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.imageMM.Models.Image;
-import com.imageMM.Models.Oeuvre;
 import com.imageMM.Response.ResponseObject;
 
 public interface ImageService {
 
-	public ResponseObject createImage(Image i);
+	public ResponseObject createImage(Image i,MultipartFile file);
 
 	ResponseObject deleteImage(String idImage);
 
