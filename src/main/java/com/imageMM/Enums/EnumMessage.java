@@ -8,8 +8,13 @@ public enum EnumMessage {
 
 	ERREUR_QUERY("Query failed",-3),
 	SUCCESS_CREATION("objet créé avec succes",1),
-	SUCCESS_UPDATE("successfully updated",2)
-    
+	SUCCESS_UPDATE("successfully updated",1),
+	SUCCESS_DELETE("objet delted successfullys",1),
+	OBJECT_EXISTS("objet exists",1),
+	OBJECT_NOT_EXISTS("objet not found",-2),
+	LIST_EMPTY("list empty",-2),
+	LIST_NOT_EMPTY("list not empty",1),
+
 
 	;
 

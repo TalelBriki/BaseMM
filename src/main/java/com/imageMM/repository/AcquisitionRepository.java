@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.imageMM.Models.Acquisition;
 
-public interface AcquisitionRepository extends MongoRepository<String, Acquisition>{
+public interface AcquisitionRepository extends MongoRepository<Acquisition,String>{
+	public Acquisition getById(String id);
 
 }

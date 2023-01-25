@@ -5,35 +5,38 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.imageMM.Enums.EnumMessage;
-import com.imageMM.Models.Oeuvre;
+import com.imageMM.Models.Pret;
 import com.imageMM.Response.ResponseObject;
-import com.imageMM.repository.OeuvreRepository;
-import com.imageMM.service.OeuvreService;
+import com.imageMM.repository.PretRepository;
+import com.imageMM.service.PretService;
 
-public class OeuvreServiceImpl implements OeuvreService{
+
+public class PretServiceImpl implements PretService{
 
 	
 	@Autowired
-	private OeuvreRepository repo;
+	private PretRepository repo;
 	
+	
+
 	@Override
-	public ResponseObject createOeuvreObject(Oeuvre o) {
+	public ResponseObject createPret(Pret b) {
 		// TODO Auto-generated method stub
 		try {
-			Oeuvre ov=repo.save(o);
+			Pret ov=repo.save(b);
 			return new ResponseObject(EnumMessage.SUCCESS_CREATION.code,
 					EnumMessage.SUCCESS_CREATION.label, ov); 
 
 		}catch (Exception e) {
 			return new ResponseObject(EnumMessage.ERREUR_QUERY.code, e.getMessage(), null); 
-		}
-	}
+		}	}
 
-	@Override
-	public ResponseObject deleteOeuvreObject(String idOeuvre) {
+
+		@Override
+	public ResponseObject deletePret(String idPret) {
 		// TODO Auto-generated method stub
 		try {
-			repo.deleteById(idOeuvre);
+			repo.deleteById(idPret);
 			return new ResponseObject(EnumMessage.SUCCESS_DELETE.code,
 					EnumMessage.SUCCESS_DELETE.label, null); 
 
@@ -43,10 +46,10 @@ public class OeuvreServiceImpl implements OeuvreService{
 	}
 
 	@Override
-	public ResponseObject updateOeuvreObject(Oeuvre o) {
+	public ResponseObject updatePret(Pret o) {
 		// TODO Auto-generated method stub
 		try {
-			Oeuvre ov=repo.save(o);
+			Pret ov=repo.save(o);
 			return new ResponseObject(EnumMessage.SUCCESS_CREATION.code,
 					EnumMessage.SUCCESS_CREATION.label, ov); 
 
@@ -56,9 +59,9 @@ public class OeuvreServiceImpl implements OeuvreService{
 	}
 
 	@Override
-	public ResponseObject getOeuvreObjectById(String idOeuvre) {
+	public ResponseObject getPretById(String idPret) {
 		try {
-			Oeuvre ov=repo.getById(idOeuvre);
+			Pret ov=repo.getByIPret(idPret);
 			if(ov==null)
 			{
 				return new ResponseObject(EnumMessage.OBJECT_NOT_EXISTS.code,
@@ -73,9 +76,9 @@ public class OeuvreServiceImpl implements OeuvreService{
 	}
 
 	@Override
-	public ResponseObject getAllOeuvreObject() {
+	public ResponseObject getAllPret() {
 		try {
-			List<Oeuvre> ov=repo.findAll();
+			List<Pret> ov=repo.findAll();
 			if(ov==null||ov.isEmpty())
 			{
 				return new ResponseObject(EnumMessage.LIST_EMPTY.code,
@@ -89,10 +92,6 @@ public class OeuvreServiceImpl implements OeuvreService{
 		}
 	}
 
-	@Override
-	public ResponseObject findOeuvreByCritere(String cirtere, String cirtereValue) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

@@ -5,35 +5,41 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.imageMM.Enums.EnumMessage;
+import com.imageMM.Models.Restauration;
 import com.imageMM.Models.Oeuvre;
 import com.imageMM.Response.ResponseObject;
+import com.imageMM.repository.RestaurationRepository;
 import com.imageMM.repository.OeuvreRepository;
+import com.imageMM.service.RestaurationService;
 import com.imageMM.service.OeuvreService;
 
-public class OeuvreServiceImpl implements OeuvreService{
+
+public class RestaurationServiceImpl implements RestaurationService{
 
 	
 	@Autowired
-	private OeuvreRepository repo;
+	private RestaurationRepository repo;
 	
+	
+
 	@Override
-	public ResponseObject createOeuvreObject(Oeuvre o) {
+	public ResponseObject createRestauration(Restauration b) {
 		// TODO Auto-generated method stub
 		try {
-			Oeuvre ov=repo.save(o);
+			Restauration ov=repo.save(b);
 			return new ResponseObject(EnumMessage.SUCCESS_CREATION.code,
 					EnumMessage.SUCCESS_CREATION.label, ov); 
 
 		}catch (Exception e) {
 			return new ResponseObject(EnumMessage.ERREUR_QUERY.code, e.getMessage(), null); 
-		}
-	}
+		}	}
 
-	@Override
-	public ResponseObject deleteOeuvreObject(String idOeuvre) {
+
+@Override
+	public ResponseObject deleteRestauration(String idRestauration) {
 		// TODO Auto-generated method stub
 		try {
-			repo.deleteById(idOeuvre);
+			repo.deleteById(idRestauration);
 			return new ResponseObject(EnumMessage.SUCCESS_DELETE.code,
 					EnumMessage.SUCCESS_DELETE.label, null); 
 
@@ -42,11 +48,12 @@ public class OeuvreServiceImpl implements OeuvreService{
 		}
 	}
 
+	
 	@Override
-	public ResponseObject updateOeuvreObject(Oeuvre o) {
+	public ResponseObject updateRestauration(Restauration o) {
 		// TODO Auto-generated method stub
 		try {
-			Oeuvre ov=repo.save(o);
+			Restauration ov=repo.save(o);
 			return new ResponseObject(EnumMessage.SUCCESS_CREATION.code,
 					EnumMessage.SUCCESS_CREATION.label, ov); 
 
@@ -56,9 +63,10 @@ public class OeuvreServiceImpl implements OeuvreService{
 	}
 
 	@Override
-	public ResponseObject getOeuvreObjectById(String idOeuvre) {
+	
+	public ResponseObject getRestaurationById(String idRestauration) {
 		try {
-			Oeuvre ov=repo.getById(idOeuvre);
+			Restauration ov=repo.getById(idRestauration);
 			if(ov==null)
 			{
 				return new ResponseObject(EnumMessage.OBJECT_NOT_EXISTS.code,
@@ -73,9 +81,10 @@ public class OeuvreServiceImpl implements OeuvreService{
 	}
 
 	@Override
-	public ResponseObject getAllOeuvreObject() {
+	
+	public ResponseObject getAllRestauration() {
 		try {
-			List<Oeuvre> ov=repo.findAll();
+			List<Restauration> ov=repo.findAll();
 			if(ov==null||ov.isEmpty())
 			{
 				return new ResponseObject(EnumMessage.LIST_EMPTY.code,
@@ -89,10 +98,5 @@ public class OeuvreServiceImpl implements OeuvreService{
 		}
 	}
 
-	@Override
-	public ResponseObject findOeuvreByCritere(String cirtere, String cirtereValue) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

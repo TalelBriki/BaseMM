@@ -5,35 +5,41 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.imageMM.Enums.EnumMessage;
+import com.imageMM.Models.Image;
 import com.imageMM.Models.Oeuvre;
 import com.imageMM.Response.ResponseObject;
+import com.imageMM.repository.ImageRepository;
 import com.imageMM.repository.OeuvreRepository;
+import com.imageMM.service.ImageService;
 import com.imageMM.service.OeuvreService;
 
-public class OeuvreServiceImpl implements OeuvreService{
+public class ImageServiceImpl implements ImageService{
 
 	
 	@Autowired
-	private OeuvreRepository repo;
+	private ImageRepository repo;
 	
+	
+
 	@Override
-	public ResponseObject createOeuvreObject(Oeuvre o) {
+	public ResponseObject createImage(Image b) {
 		// TODO Auto-generated method stub
 		try {
-			Oeuvre ov=repo.save(o);
+			Image ov=repo.save(b);
 			return new ResponseObject(EnumMessage.SUCCESS_CREATION.code,
 					EnumMessage.SUCCESS_CREATION.label, ov); 
 
 		}catch (Exception e) {
 			return new ResponseObject(EnumMessage.ERREUR_QUERY.code, e.getMessage(), null); 
-		}
-	}
+		}	}
 
-	@Override
-	public ResponseObject deleteOeuvreObject(String idOeuvre) {
+
+
+@Override
+	public ResponseObject deleteImage(String idImage) {
 		// TODO Auto-generated method stub
 		try {
-			repo.deleteById(idOeuvre);
+			repo.deleteById(idImage);
 			return new ResponseObject(EnumMessage.SUCCESS_DELETE.code,
 					EnumMessage.SUCCESS_DELETE.label, null); 
 
@@ -42,11 +48,13 @@ public class OeuvreServiceImpl implements OeuvreService{
 		}
 	}
 
+	
 	@Override
-	public ResponseObject updateOeuvreObject(Oeuvre o) {
+	
+	public ResponseObject updateImage(Image o) {
 		// TODO Auto-generated method stub
 		try {
-			Oeuvre ov=repo.save(o);
+			Image ov=repo.save(o);
 			return new ResponseObject(EnumMessage.SUCCESS_CREATION.code,
 					EnumMessage.SUCCESS_CREATION.label, ov); 
 
@@ -55,10 +63,11 @@ public class OeuvreServiceImpl implements OeuvreService{
 		}
 	}
 
+	
 	@Override
-	public ResponseObject getOeuvreObjectById(String idOeuvre) {
+    public ResponseObject getImageById(String idImage) {
 		try {
-			Oeuvre ov=repo.getById(idOeuvre);
+			Image ov=repo.getById(idImage);
 			if(ov==null)
 			{
 				return new ResponseObject(EnumMessage.OBJECT_NOT_EXISTS.code,
@@ -72,10 +81,11 @@ public class OeuvreServiceImpl implements OeuvreService{
 		}
 	}
 
+	
 	@Override
-	public ResponseObject getAllOeuvreObject() {
+	public ResponseObject getAllImage() {
 		try {
-			List<Oeuvre> ov=repo.findAll();
+			List<Image> ov=repo.findAll();
 			if(ov==null||ov.isEmpty())
 			{
 				return new ResponseObject(EnumMessage.LIST_EMPTY.code,
@@ -87,12 +97,8 @@ public class OeuvreServiceImpl implements OeuvreService{
 		}catch (Exception e) {
 			return new ResponseObject(EnumMessage.ERREUR_QUERY.code, e.getMessage(), null); 
 		}
+
 	}
 
-	@Override
-	public ResponseObject findOeuvreByCritere(String cirtere, String cirtereValue) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

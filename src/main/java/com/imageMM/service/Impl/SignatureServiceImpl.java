@@ -6,34 +6,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.imageMM.Enums.EnumMessage;
 import com.imageMM.Models.Oeuvre;
+import com.imageMM.Models.Signature;
 import com.imageMM.Response.ResponseObject;
 import com.imageMM.repository.OeuvreRepository;
+import com.imageMM.repository.SignatureRepository;
 import com.imageMM.service.OeuvreService;
+import com.imageMM.service.SignatureService;
 
-public class OeuvreServiceImpl implements OeuvreService{
+public class SignatureServiceImpl implements SignatureService{
 
 	
 	@Autowired
-	private OeuvreRepository repo;
+	private SignatureRepository repo;
 	
+
+
 	@Override
-	public ResponseObject createOeuvreObject(Oeuvre o) {
+	public ResponseObject createSignature(Signature s) {
 		// TODO Auto-generated method stub
 		try {
-			Oeuvre ov=repo.save(o);
+			Signature sign=repo.save(s);
 			return new ResponseObject(EnumMessage.SUCCESS_CREATION.code,
-					EnumMessage.SUCCESS_CREATION.label, ov); 
+					EnumMessage.SUCCESS_CREATION.label, s); 
 
 		}catch (Exception e) {
 			return new ResponseObject(EnumMessage.ERREUR_QUERY.code, e.getMessage(), null); 
-		}
-	}
+		}	}
 
-	@Override
-	public ResponseObject deleteOeuvreObject(String idOeuvre) {
+@Override
+	public ResponseObject deleteSignature(String idSignature) {
 		// TODO Auto-generated method stub
 		try {
-			repo.deleteById(idOeuvre);
+			repo.deleteById(idSignature);
 			return new ResponseObject(EnumMessage.SUCCESS_DELETE.code,
 					EnumMessage.SUCCESS_DELETE.label, null); 
 
@@ -42,11 +46,13 @@ public class OeuvreServiceImpl implements OeuvreService{
 		}
 	}
 
+	
 	@Override
-	public ResponseObject updateOeuvreObject(Oeuvre o) {
+	
+	public ResponseObject updateSignature(Signature o) {
 		// TODO Auto-generated method stub
 		try {
-			Oeuvre ov=repo.save(o);
+			Signature ov=repo.save(o);
 			return new ResponseObject(EnumMessage.SUCCESS_CREATION.code,
 					EnumMessage.SUCCESS_CREATION.label, ov); 
 
@@ -56,9 +62,11 @@ public class OeuvreServiceImpl implements OeuvreService{
 	}
 
 	@Override
-	public ResponseObject getOeuvreObjectById(String idOeuvre) {
+	
+	
+	public ResponseObject getSignatureById(String idSignature) {
 		try {
-			Oeuvre ov=repo.getById(idOeuvre);
+			Signature ov=repo.getById(idSignature);
 			if(ov==null)
 			{
 				return new ResponseObject(EnumMessage.OBJECT_NOT_EXISTS.code,
@@ -73,9 +81,11 @@ public class OeuvreServiceImpl implements OeuvreService{
 	}
 
 	@Override
-	public ResponseObject getAllOeuvreObject() {
+	
+	
+	public ResponseObject getAllSignature() {
 		try {
-			List<Oeuvre> ov=repo.findAll();
+			List<Signature> ov=repo.findAll();
 			if(ov==null||ov.isEmpty())
 			{
 				return new ResponseObject(EnumMessage.LIST_EMPTY.code,
@@ -89,10 +99,6 @@ public class OeuvreServiceImpl implements OeuvreService{
 		}
 	}
 
-	@Override
-	public ResponseObject findOeuvreByCritere(String cirtere, String cirtereValue) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }
